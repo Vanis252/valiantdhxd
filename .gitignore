@@ -3,4 +3,4 @@ warn"Valiant will be down for some time due to PSU Deobfuscation. For future inf
 end
 local Message = Instance.new'Hint'
 Message.Parent = Workspace
-Message.Text "Valiant will be down for some time due to PSU Deobfuscation. For future information, join our Discord server: https://discord.gg/bwJ8hDfUvP" 
+Message.Text = "Valiant will be down for some time due to PSU Deobfuscation. For future information, join our Discord server: https://discord.gg/bwJ8hDfUvP" 
