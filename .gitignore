@@ -1,6 +1,6 @@
     		game:GetService("StarterGui"):SetCore("SendNotification", {
 			Title = 'Valiant',
-			Text = "Valiant will be down for a unknown time. Please join our Discord server for future information. (Successfully copied to your clipboard)",
+			Text = "Valiant will be down for an unknown time. Please join our Discord server for future information. (Successfully copied to your clipboard)",
 			Duration = 6
 		})
     setclipboard"https://discord.gg/mTfEncjCKv"
