@@ -1,0 +1,11 @@
+		game:GetService("StarterGui"):SetCore("SendNotification", {
+			Title = 'Valiant',
+			Text = "Valiant is getting discountinued. Please use the new script called Serenity! Copied invite to your clipboard",
+			Duration = 10
+		})
+    setclipboard("https://discord.gg/mTfEncjCKv")
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+			Title = 'Valiant',
+			Text = "SERENITY > ALL !!!",
+			Duration = 10
+		})
