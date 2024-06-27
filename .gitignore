@@ -1027,7 +1027,7 @@ function library:CreateWindow(name, version, icon)
 
 				-- Add buttons to the dropdown
 				for _, buttonInfo in pairs(buttons) do
-					local Button = Instance.new("TextButton")
+					Button = Instance.new("TextButton")
 					Button.Name = "Button"
 					Button.Parent = OptionsFrame
 					Button.AnchorPoint = Vector2.new(1, 0)
@@ -1060,9 +1060,9 @@ function library:CreateWindow(name, version, icon)
 					local script = Instance.new('LocalScript', DropdownSearch)
 
 					local function UpdateResults()
-						local search = string.lower(script.Parent.SearchBox.Text)
+						local search = string.lower(SearchBox.Text)
 
-						for _, v in pairs(script.Parent.Parent.Parent.OptionsFrame:GetChildren()) do
+						for _, v in pairs(OptionsFrame:GetChildren()) do
 							if v:IsA("TextButton") then
 								local itemName = string.lower(v.Text)
 								local shouldBeVisible = true
@@ -1090,32 +1090,32 @@ function library:CreateWindow(name, version, icon)
 					end
 
 					-- Connect the UpdateResults function to the SearchBox's Changed event
-					script.Parent.SearchBox.Changed:Connect(UpdateResults)
+					SearchBox.Changed:Connect(UpdateResults)
 				end
 				coroutine.wrap(JNFZ_fake_script)()
 
 				local function RLFT_fake_script() -- Button.LocalScript
 					local script = Instance.new('LocalScript', Button)
 
-					script.Parent.MouseButton1Click:Connect(function()
+					Button.MouseButton1Click:Connect(function()
 						local original = UDim2.new(0, 98, 0, 22)
 						local expanded = UDim2.new(0, 173,0, 153)
-						script.Parent.OptionsFrame.Visible = false
+						OptionsFrame.Visible = false
 
-						game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.4), {Size = expanded}):Play()
-						game:GetService("TweenService"):Create(script.Parent.OptionsFrame, TweenInfo.new(0.4), {Size = expanded}):Play()
-						script.Parent.OptionsFrame.Visible = true
+						game:GetService("TweenService"):Create(Button, TweenInfo.new(0.4), {Size = expanded}):Play()
+						game:GetService("TweenService"):Create(OptionsFrame, TweenInfo.new(0.4), {Size = expanded}):Play()
+						OptionsFrame.Visible = true
 
-						for _, optionButton in ipairs(script.Parent.OptionsFrame:GetChildren()) do
+						for _, optionButton in ipairs(OptionsFrame:GetChildren()) do
 							if optionButton:IsA("TextButton") then
 								optionButton.MouseButton1Click:Connect(function()
-									script.Parent.Text = optionButton.Text
-									game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.4), {Size = original}):Play()
+									Button.Text = optionButton.Text
+									game:GetService("TweenService"):Create(Button, TweenInfo.new(0.4), {Size = original}):Play()
 									local info = TweenInfo.new(0.4)
-									local tween = game:GetService("TweenService"):Create(script.Parent.OptionsFrame, info, {Size = original})
+									local tween = game:GetService("TweenService"):Create(OptionsFrame, info, {Size = original})
 									tween:Play()
 									tween.Completed:Wait()
-									script.Parent.OptionsFrame.Visible = false
+									OptionsFrame.Visible = false
 								end)
 							end
 						end
@@ -1126,25 +1126,25 @@ function library:CreateWindow(name, version, icon)
 				local function YBHRFV_fake_script() -- Button_2.LocalScript
 					local script = Instance.new('LocalScript', Button)
 
-					script.Parent.MouseButton1Click:Connect(function()
+					Button.MouseButton1Click:Connect(function()
 						local original = UDim2.new(0, 98, 0, 22)
 						local expanded = UDim2.new(0, 173,0, 153)
-						script.Parent.OptionsFrame.Visible = false
+						OptionsFrame.Visible = false
 
-						game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.4), {Size = expanded}):Play()
-						game:GetService("TweenService"):Create(script.Parent.OptionsFrame, TweenInfo.new(0.4), {Size = expanded}):Play()
-						script.Parent.OptionsFrame.Visible = true
+						game:GetService("TweenService"):Create(Button, TweenInfo.new(0.4), {Size = expanded}):Play()
+						game:GetService("TweenService"):Create(OptionsFrame, TweenInfo.new(0.4), {Size = expanded}):Play()
+						OptionsFrame.Visible = true
 
-						for _, optionButton in ipairs(script.Parent.OptionsFrame:GetChildren()) do
+						for _, optionButton in ipairs(OptionsFrame:GetChildren()) do
 							if optionButton:IsA("TextButton") then
 								optionButton.MouseButton1Click:Connect(function()
-									script.Parent.Text = optionButton.Text
-									game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.4), {Size = original}):Play()
+									Button.Text = optionButton.Text
+									game:GetService("TweenService"):Create(Button, TweenInfo.new(0.4), {Size = original}):Play()
 									local info = TweenInfo.new(0.4)
-									local tween = game:GetService("TweenService"):Create(script.Parent.OptionsFrame, info, {Size = original})
+									local tween = game:GetService("TweenService"):Create(OptionsFrame, info, {Size = original})
 									tween:Play()
 									tween.Completed:Wait()
-									script.Parent.OptionsFrame.Visible = false
+									OptionsFrame.Visible = false
 								end)
 							end
 						end
@@ -1158,15 +1158,15 @@ function library:CreateWindow(name, version, icon)
 					local original = UDim2.new(0, 98, 0, 22)
 					local expanded = UDim2.new(0, 173, 0, 153)
 
-					script.Parent.MouseButton1Click:Connect(function()
+					KButton.MouseButton1Click:Connect(function()
 
-						local thing = script.Parent.OptionsFrame
+						local thing = OptionsFrame
 						local skrt = thing.DropdownSearch
 						-- Ensure OptionsFrame visibility and size
-						script.Parent.OptionsFrame.Visible = true
-						script.Parent.OptionsFrame.Size = original -- Set initial size before tweening
+						OptionsFrame.Visible = true
+						OptionsFrame.Size = original -- Set initial size before tweening
 						skrt.Visible = true
-						for _, optionButton in pairs(script.Parent.OptionsFrame:GetChildren()) do
+						for _, optionButton in pairs(OptionsFrame:GetChildren()) do
 							if optionButton:IsA("TextButton") then
 								optionButton.Visible = true
 							end
@@ -1175,32 +1175,31 @@ function library:CreateWindow(name, version, icon)
 						-- Tween animations
 						local tweenInfo = TweenInfo.new(0.15)
 
-						-- Tween for the button (script.Parent)
-						local tweenButton = game:GetService("TweenService"):Create(script.Parent, tweenInfo, {Size = expanded})
+						local tweenButton = game:GetService("TweenService"):Create(KButton, tweenInfo, {Size = expanded})
 						tweenButton:Play()
 
 						-- Tween for OptionsFrame and its contents
-						local tweenOptionsFrame = game:GetService("TweenService"):Create(script.Parent.OptionsFrame, tweenInfo, {Size = expanded})
+						local tweenOptionsFrame = game:GetService("TweenService"):Create(OptionsFrame, tweenInfo, {Size = expanded})
 						tweenOptionsFrame:Play()
 
 						-- Handle option button clicks
-						for _, optionButton in pairs(script.Parent.OptionsFrame:GetChildren()) do
+						for _, optionButton in pairs(OptionsFrame:GetChildren()) do
 							if optionButton:IsA("TextButton") then
 								optionButton.MouseButton1Click:Connect(function()
-									script.Parent.Text = optionButton.Text
+									KButton.Text = optionButton.Text
 
 									-- Reverse tweens for button and OptionsFrame
-									local tweenBackButton = game:GetService("TweenService"):Create(script.Parent, tweenInfo, {Size = original})
+									local tweenBackButton = game:GetService("TweenService"):Create(KButton, tweenInfo, {Size = original})
 									tweenBackButton:Play()
 									skrt.Visible = false
 
 									optionButton.Visible = false
 
-									local tweenBackOptionsFrame = game:GetService("TweenService"):Create(script.Parent.OptionsFrame, tweenInfo, {Size = original})
+									local tweenBackOptionsFrame = game:GetService("TweenService"):Create(OptionsFrame, tweenInfo, {Size = original})
 									tweenBackOptionsFrame:Play()
 
 									wait(tweenInfo.Time) -- Wait for the tween to complete before hiding OptionsFrame
-									script.Parent.OptionsFrame.Visible = false
+									OptionsFrame.Visible = false
 								end)
 							end
 						end
