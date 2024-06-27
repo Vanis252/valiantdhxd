@@ -485,7 +485,7 @@ function library:CreateWindow(name, version, icon)
 				elseif me:IsA("Frame") and me.Name == "Slider" then
 					size = size + 47
 				elseif me:IsA("Frame") and me.Name == "Dropdown" then
-					size = size + 31
+					size = size + 40
 				end
 				Section.Size = UDim2.new(1,0,0,size)
 				--DON'T TOUCH VANIS 
