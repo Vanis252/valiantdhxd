@@ -1093,6 +1093,7 @@ function library:CreateWindow(name, version, icon)
 					SearchBox.Changed:Connect(UpdateResults)
 				end
 				coroutine.wrap(JNFZ_fake_script)()
+--[[
 
 				local function RLFT_fake_script() -- Button.LocalScript
 					local script = Instance.new('LocalScript', Button)
@@ -1206,6 +1207,7 @@ function library:CreateWindow(name, version, icon)
 					end)
 				end
 				coroutine.wrap(USYX_fake_script)()
+]]
 			end
 
 			function pagebuttons:CreateBox(name, icon, callback)
