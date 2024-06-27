@@ -1056,43 +1056,45 @@ function library:CreateWindow(name, version, icon)
 				end)
 
 				-- LocalScripts
-				local function JNFZ_fake_script() -- DropdownSearch.LocalScript
-					local script = Instance.new('LocalScript', DropdownSearch)
+spawn(function()
+					local function JNFZ_fake_script() -- DropdownSearch.LocalScript
+						local script = Instance.new('LocalScript', DropdownSearch)
 
-					local function UpdateResults()
-						local search = string.lower(SearchBox.Text)
+						local function UpdateResults()
+							local search = string.lower(SearchBox.Text)
 
-						for _, v in pairs(OptionsFrame:GetChildren()) do
-							if v:IsA("TextButton") then
-								local itemName = string.lower(v.Text)
-								local shouldBeVisible = true
+							for _, v in pairs(OptionsFrame:GetChildren()) do
+								if v:IsA("TextButton") then
+									local itemName = string.lower(v.Text)
+									local shouldBeVisible = true
 
-								if search ~= "" then
-									if v.Name == "Button" then
-										if not string.find(itemName, search) then
-											shouldBeVisible = false
+									if search ~= "" then
+										if v.Name == "Button" then
+											if not string.find(itemName, search) then
+												shouldBeVisible = false
+											end
 										end
 									end
+
+									-- Tween transparency for smoother animation
+									local endTransparency = shouldBeVisible and 0 or 0.5
+									local tweenInfo = TweenInfo.new(0.2)
+									local tween = game:GetService("TweenService"):Create(v, tweenInfo, { Transparency = endTransparency })
+									tween:Play()
+
+									-- Set visibility after animation completes
+									tween.Completed:Connect(function()
+										v.Visible = shouldBeVisible
+									end)
 								end
-
-								-- Tween transparency for smoother animation
-								local endTransparency = shouldBeVisible and 0 or 0.5
-								local tweenInfo = TweenInfo.new(0.2)
-								local tween = game:GetService("TweenService"):Create(v, tweenInfo, { Transparency = endTransparency })
-								tween:Play()
-
-								-- Set visibility after animation completes
-								tween.Completed:Connect(function()
-									v.Visible = shouldBeVisible
-								end)
 							end
 						end
-					end
 
-					-- Connect the UpdateResults function to the SearchBox's Changed event
-					SearchBox.Changed:Connect(UpdateResults)
-				end
-				coroutine.wrap(JNFZ_fake_script)()
+						-- Connect the UpdateResults function to the SearchBox's Changed event
+						SearchBox.Changed:Connect(UpdateResults)
+					end
+					coroutine.wrap(JNFZ_fake_script)()
+end)
 --[[
 
 				local function RLFT_fake_script() -- Button.LocalScript
