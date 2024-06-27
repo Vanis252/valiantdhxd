@@ -1109,7 +1109,7 @@ function library:CreateWindow(name, version, icon)
 				Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 				Title.TextSize = 14.000
 				Title.TextXAlignment = Enum.TextXAlignment.Left
-				
+
 				local function LQHEFF_fake_script() -- DropdownSearch.LocalScript 
 					local script = Instance.new('LocalScript', DropdownSearch)
 
