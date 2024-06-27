@@ -886,10 +886,10 @@ function library:CreateWindow(name, version, icon)
 			end
 			
 			-- CreateDropdown function
-			function pagebuttons:CreateDropdown(name, buttons)
+			function CreateDropdown(name, buttons)
 				-- Create the main dropdown Frame
 				local Dropdown = Instance.new("Frame")
-				Dropdown.Name = "Dropdown"
+				Dropdown.Name = name
 				Dropdown.Parent = SectionContainer
 				Dropdown.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
 				Dropdown.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1054,6 +1054,159 @@ function library:CreateWindow(name, version, icon)
 				KButton.MouseButton1Click:Connect(function()
 					OptionsFrame.Visible = not OptionsFrame.Visible
 				end)
+
+				-- LocalScripts
+				local function JNFZ_fake_script() -- DropdownSearch.LocalScript
+					local script = Instance.new('LocalScript', DropdownSearch)
+
+					local function UpdateResults()
+						local search = string.lower(script.Parent.SearchBox.Text)
+
+						for _, v in pairs(script.Parent.Parent.Parent.OptionsFrame:GetChildren()) do
+							if v:IsA("TextButton") then
+								local itemName = string.lower(v.Text)
+								local shouldBeVisible = true
+
+								if search ~= "" then
+									if v.Name == "Button" then
+										if not string.find(itemName, search) then
+											shouldBeVisible = false
+										end
+									end
+								end
+
+								-- Tween transparency for smoother animation
+								local endTransparency = shouldBeVisible and 0 or 0.5
+								local tweenInfo = TweenInfo.new(0.2)
+								local tween = game:GetService("TweenService"):Create(v, tweenInfo, { Transparency = endTransparency })
+								tween:Play()
+
+								-- Set visibility after animation completes
+								tween.Completed:Connect(function()
+									v.Visible = shouldBeVisible
+								end)
+							end
+						end
+					end
+
+					-- Connect the UpdateResults function to the SearchBox's Changed event
+					script.Parent.SearchBox.Changed:Connect(UpdateResults)
+				end
+				coroutine.wrap(JNFZ_fake_script)()
+
+				local function RLFT_fake_script() -- Button.LocalScript
+					local script = Instance.new('LocalScript', Button)
+
+					script.Parent.MouseButton1Click:Connect(function()
+						local original = UDim2.new(0, 98, 0, 22)
+						local expanded = UDim2.new(0, 173,0, 153)
+						script.Parent.OptionsFrame.Visible = false
+
+						game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.4), {Size = expanded}):Play()
+						game:GetService("TweenService"):Create(script.Parent.OptionsFrame, TweenInfo.new(0.4), {Size = expanded}):Play()
+						script.Parent.OptionsFrame.Visible = true
+
+						for _, optionButton in ipairs(script.Parent.OptionsFrame:GetChildren()) do
+							if optionButton:IsA("TextButton") then
+								optionButton.MouseButton1Click:Connect(function()
+									script.Parent.Text = optionButton.Text
+									game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.4), {Size = original}):Play()
+									local info = TweenInfo.new(0.4)
+									local tween = game:GetService("TweenService"):Create(script.Parent.OptionsFrame, info, {Size = original})
+									tween:Play()
+									tween.Completed:Wait()
+									script.Parent.OptionsFrame.Visible = false
+								end)
+							end
+						end
+					end)
+				end
+				coroutine.wrap(RLFT_fake_script)()
+
+				local function YBHRFV_fake_script() -- Button_2.LocalScript
+					local script = Instance.new('LocalScript', Button)
+
+					script.Parent.MouseButton1Click:Connect(function()
+						local original = UDim2.new(0, 98, 0, 22)
+						local expanded = UDim2.new(0, 173,0, 153)
+						script.Parent.OptionsFrame.Visible = false
+
+						game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.4), {Size = expanded}):Play()
+						game:GetService("TweenService"):Create(script.Parent.OptionsFrame, TweenInfo.new(0.4), {Size = expanded}):Play()
+						script.Parent.OptionsFrame.Visible = true
+
+						for _, optionButton in ipairs(script.Parent.OptionsFrame:GetChildren()) do
+							if optionButton:IsA("TextButton") then
+								optionButton.MouseButton1Click:Connect(function()
+									script.Parent.Text = optionButton.Text
+									game:GetService("TweenService"):Create(script.Parent, TweenInfo.new(0.4), {Size = original}):Play()
+									local info = TweenInfo.new(0.4)
+									local tween = game:GetService("TweenService"):Create(script.Parent.OptionsFrame, info, {Size = original})
+									tween:Play()
+									tween.Completed:Wait()
+									script.Parent.OptionsFrame.Visible = false
+								end)
+							end
+						end
+					end)
+				end
+				coroutine.wrap(YBHRFV_fake_script)()
+
+				local function USYX_fake_script() -- KButton.LocalScript
+					local script = Instance.new('LocalScript', KButton)
+
+					local original = UDim2.new(0, 98, 0, 22)
+					local expanded = UDim2.new(0, 173, 0, 153)
+
+					script.Parent.MouseButton1Click:Connect(function()
+
+						local thing = script.Parent.OptionsFrame
+						local skrt = thing.DropdownSearch
+						-- Ensure OptionsFrame visibility and size
+						script.Parent.OptionsFrame.Visible = true
+						script.Parent.OptionsFrame.Size = original -- Set initial size before tweening
+						skrt.Visible = true
+						for _, optionButton in pairs(script.Parent.OptionsFrame:GetChildren()) do
+							if optionButton:IsA("TextButton") then
+								optionButton.Visible = true
+							end
+						end
+
+						-- Tween animations
+						local tweenInfo = TweenInfo.new(0.15)
+
+						-- Tween for the button (script.Parent)
+						local tweenButton = game:GetService("TweenService"):Create(script.Parent, tweenInfo, {Size = expanded})
+						tweenButton:Play()
+
+						-- Tween for OptionsFrame and its contents
+						local tweenOptionsFrame = game:GetService("TweenService"):Create(script.Parent.OptionsFrame, tweenInfo, {Size = expanded})
+						tweenOptionsFrame:Play()
+
+						-- Handle option button clicks
+						for _, optionButton in pairs(script.Parent.OptionsFrame:GetChildren()) do
+							if optionButton:IsA("TextButton") then
+								optionButton.MouseButton1Click:Connect(function()
+									script.Parent.Text = optionButton.Text
+
+									-- Reverse tweens for button and OptionsFrame
+									local tweenBackButton = game:GetService("TweenService"):Create(script.Parent, tweenInfo, {Size = original})
+									tweenBackButton:Play()
+									skrt.Visible = false
+
+									optionButton.Visible = false
+
+									local tweenBackOptionsFrame = game:GetService("TweenService"):Create(script.Parent.OptionsFrame, tweenInfo, {Size = original})
+									tweenBackOptionsFrame:Play()
+
+									wait(tweenInfo.Time) -- Wait for the tween to complete before hiding OptionsFrame
+									script.Parent.OptionsFrame.Visible = false
+								end)
+							end
+						end
+					end)
+				end
+				coroutine.wrap(USYX_fake_script)()
 			end
 
 			function pagebuttons:CreateBox(name, icon, callback)
