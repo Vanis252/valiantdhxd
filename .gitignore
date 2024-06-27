@@ -886,10 +886,10 @@ function library:CreateWindow(name, version, icon)
 			end
 			
 			-- CreateDropdown function
-			function pagebuttons:CreateDropdown(name, buttons)
+			function pagebuttons:CreateDropdown(name)
 				-- Create the main dropdown Frame
 				local Dropdown = Instance.new("Frame")
-				Dropdown.Name = name
+				Dropdown.Name = "Dropdown"
 				Dropdown.Parent = SectionContainer
 				Dropdown.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
 				Dropdown.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1026,6 +1026,7 @@ function library:CreateWindow(name, version, icon)
 				SearchBox.TextXAlignment = Enum.TextXAlignment.Left
 
 				-- Add buttons to the dropdown
+--[[
 				for _, buttonInfo in pairs(buttons) do
 					Button = Instance.new("TextButton")
 					Button.Name = "Button"
@@ -1054,6 +1055,7 @@ function library:CreateWindow(name, version, icon)
 				KButton.MouseButton1Click:Connect(function()
 					OptionsFrame.Visible = not OptionsFrame.Visible
 				end)
+]]
 
 				-- LocalScripts
 --[[
