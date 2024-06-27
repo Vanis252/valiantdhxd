@@ -157,8 +157,6 @@ function library:CreateWindow(name, version, icon)
 				if Tabs and Tabs.Visible == true then
 					Tabs.Visible = false
 				end
-			Window:WaitForChild("Tabs").Visible = false
-			Window:WaitForChild("TitleBar").Visible = false
 			end
 		else
 			MinimizeGui = false
@@ -901,7 +899,7 @@ function library:CreateWindow(name, version, icon)
 				local UICorner = Instance.new("UICorner")
 				UICorner.CornerRadius = UDim.new(0, 3)
 				UICorner.Parent = Dropdown
-
+--[[
 				local Title = Instance.new("TextLabel")
 				Title.Name = "Title"
 				Title.Parent = Dropdown
@@ -1026,6 +1024,7 @@ function library:CreateWindow(name, version, icon)
 				SearchBox.TextColor3 = Color3.fromRGB(227, 225, 228)
 				SearchBox.TextSize = 14.000
 				SearchBox.TextXAlignment = Enum.TextXAlignment.Left
+	]]
 
 				-- Add buttons to the dropdown
 --[[
