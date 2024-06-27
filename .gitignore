@@ -1153,7 +1153,7 @@ function library:CreateWindow(name, version, icon)
 
 					Button.MouseButton1Click:Connect(function()
 						local original = UDim2.new(0, 166, 0, 21)
-						local expanded = UDim2.new(0, 173,0, 153)
+						local expanded = UDim2.new(0, 166, 0, 21)
 						OptionsFrame.Visible = false
 
 						game:GetService("TweenService"):Create(Button, TweenInfo.new(0.4), {Size = expanded}):Play();
@@ -1180,8 +1180,8 @@ function library:CreateWindow(name, version, icon)
 					local script = Instance.new('LocalScript', Button_2)
 
 					Button_2.MouseButton1Click:Connect(function()
-						local original = UDim2.new(0, 98, 0, 22)
-						local expanded = UDim2.new(0, 173,0, 153)
+						local original = UDim2.new(0, 166, 0, 21
+						local expanded = UDim2.new(0, 166, 0, 21)
 						OptionsFrame.Visible = false
 
 						game:GetService("TweenService"):Create(Button_2, TweenInfo.new(0.4), {Size = expanded}):Play();
