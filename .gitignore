@@ -1164,7 +1164,7 @@ function library:CreateWindow(name, version, icon)
 							if optionButton:IsA("TextButton") then
 								optionButton.MouseButton1Click:Connect(function()
 									Button.Text = optionButton.Text
-									game:GetService("TweenService"):Create(Button TweenInfo.new(0.4), {Size = original}):Play();
+									game:GetService("TweenService"):Create(Button, TweenInfo.new(0.4), {Size = original}):Play();
 									local info = TweenInfo.new(0.4)
 									local tween = game:GetService("TweenService"):Create(OptionsFrame, info, {Size = original})
 									tween:Play()
