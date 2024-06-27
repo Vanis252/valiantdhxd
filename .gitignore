@@ -886,7 +886,7 @@ function library:CreateWindow(name, version, icon)
 			end
 			
 			-- CreateDropdown function
-			function CreateDropdown(name, buttons)
+			function pagebuttons:CreateDropdown(name, buttons)
 				-- Create the main dropdown Frame
 				local Dropdown = Instance.new("Frame")
 				Dropdown.Name = name
