@@ -887,14 +887,31 @@ function library:CreateWindow(name, version, icon)
 			
 			-- CreateDropdown function
 			function pagebuttons:CreateDropdown(name)
-				-- Ensure SectionContainer is defined and available
-				if not SectionContainer then
-					warn("SectionContainer is not defined")
-					return
-				end
-
-				-- Create the main dropdown Frame
 				local Dropdown = Instance.new("Frame")
+				local UICorner = Instance.new("UICorner")
+				local Container = Instance.new("Frame")
+				local UICorner_2 = Instance.new("UICorner")
+				local KButton = Instance.new("TextButton")
+				local UICorner_3 = Instance.new("UICorner")
+				local OptionsFrame = Instance.new("Frame")
+				local UICorner_4 = Instance.new("UICorner")
+				local UIListLayout = Instance.new("UIListLayout")
+				local UIPadding = Instance.new("UIPadding")
+				local DropdownSearch = Instance.new("Frame")
+				local UICorner_5 = Instance.new("UICorner")
+				local SearchIcon = Instance.new("ImageLabel")
+				local Bar = Instance.new("Frame")
+				local SearchBox = Instance.new("TextBox")
+				local Button = Instance.new("TextButton")
+				local UICorner_6 = Instance.new("UICorner")
+				local shadowHolder = Instance.new("Frame")
+				local ambientShadow = Instance.new("ImageLabel")
+				local Button_2 = Instance.new("TextButton")
+				local UICorner_7 = Instance.new("UICorner")
+				local shadowHolder_2 = Instance.new("Frame")
+				local ambientShadow_2 = Instance.new("ImageLabel")
+				local Title = Instance.new("TextLabel")
+
 				Dropdown.Name = "Dropdown"
 				Dropdown.Parent = SectionContainer
 				Dropdown.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
@@ -902,40 +919,20 @@ function library:CreateWindow(name, version, icon)
 				Dropdown.BorderSizePixel = 0
 				Dropdown.Size = UDim2.new(1, 0, 0, 30)
 
-				-- Add a UICorner for rounded corners
-				local UICorner = Instance.new("UICorner")
 				UICorner.CornerRadius = UDim.new(0, 3)
 				UICorner.Parent = Dropdown
 
-				-- Create the Title TextLabel
-				local Title = Instance.new("TextLabel")
-				Title.Name = "Title"
-				Title.Parent = Dropdown
-				Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				Title.BackgroundTransparency = 1.000
-				Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				Title.BorderSizePixel = 0
-				Title.Position = UDim2.new(0, 7, 0, 6)
-				Title.Size = UDim2.new(1, -7, 0.55, 0)
-				Title.Font = Enum.Font.GothamBold
-				Title.Text = name
-				Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-				Title.TextSize = 12.000
-				Title.TextXAlignment = Enum.TextXAlignment.Left
-
-				local Container = Instance.new("Frame")
 				Container.Name = "Container"
 				Container.Parent = Dropdown
 				Container.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
 				Container.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Container.BorderSizePixel = 0
-				Container.Size = UDim2.new(1, 0, 1, -1)
+				Container.Position = UDim2.new(0.00466200477, 0, 0, 0)
+				Container.Size = UDim2.new(0.995338023, 0, 1, -1)
 
-				local UICorner_2 = Instance.new("UICorner")
 				UICorner_2.CornerRadius = UDim.new(0, 3)
 				UICorner_2.Parent = Container
 
-				local KButton = Instance.new("TextButton")
 				KButton.Name = "KButton"
 				KButton.Parent = Container
 				KButton.AnchorPoint = Vector2.new(1, 0)
@@ -943,16 +940,176 @@ function library:CreateWindow(name, version, icon)
 				KButton.BackgroundTransparency = 0.830
 				KButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				KButton.BorderSizePixel = 0
-				KButton.Position = UDim2.new(0.98, 0, 0.14, 0)
+				KButton.Position = UDim2.new(0.981351972, 0, 0.137931034, 0)
 				KButton.Size = UDim2.new(0, 98, 0, 22)
 				KButton.Font = Enum.Font.SourceSans
 				KButton.Text = "   F"
 				KButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 				KButton.TextSize = 14.000
 
-				local UICorner_3 = Instance.new("UICorner")
 				UICorner_3.CornerRadius = UDim.new(0, 3)
 				UICorner_3.Parent = KButton
+
+				OptionsFrame.Name = "OptionsFrame"
+				OptionsFrame.Parent = KButton
+				OptionsFrame.AnchorPoint = Vector2.new(1, 0)
+				OptionsFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 36)
+				OptionsFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				OptionsFrame.BorderSizePixel = 0
+				OptionsFrame.ClipsDescendants = true
+				OptionsFrame.Position = UDim2.new(0.991204083, 0, 0.00163615833, 0)
+				OptionsFrame.Size = UDim2.new(0, 173, 0, 153)
+				OptionsFrame.Visible = false
+
+				UICorner_4.CornerRadius = UDim.new(0, 3)
+				UICorner_4.Parent = OptionsFrame
+
+				UIListLayout.Parent = OptionsFrame
+				UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+				UIListLayout.Padding = UDim.new(0, 4)
+
+				UIPadding.Parent = OptionsFrame
+				UIPadding.PaddingBottom = UDim.new(0, 4)
+				UIPadding.PaddingLeft = UDim.new(0, 4)
+				UIPadding.PaddingRight = UDim.new(0, 4)
+				UIPadding.PaddingTop = UDim.new(0, 4)
+
+				DropdownSearch.Name = "DropdownSearch"
+				DropdownSearch.Parent = OptionsFrame
+				DropdownSearch.BackgroundColor3 = Color3.fromRGB(30, 30, 36)
+				DropdownSearch.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				DropdownSearch.BorderSizePixel = 0
+				DropdownSearch.Position = UDim2.new(0, 0, 0.172413796, 0)
+				DropdownSearch.Size = UDim2.new(1, 0, -0.0416276604, 30)
+
+				UICorner_5.CornerRadius = UDim.new(0, 3)
+				UICorner_5.Parent = DropdownSearch
+
+				SearchIcon.Name = "SearchIcon"
+				SearchIcon.Parent = DropdownSearch
+				SearchIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				SearchIcon.BackgroundTransparency = 1.000
+				SearchIcon.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				SearchIcon.BorderSizePixel = 0
+				SearchIcon.Position = UDim2.new(0, 6, 0, 3)
+				SearchIcon.Size = UDim2.new(0, 18, 0, 18)
+				SearchIcon.Image = "rbxassetid://10045418551"
+				SearchIcon.ImageColor3 = Color3.fromRGB(135, 255, 135)
+
+				Bar.Name = "Bar"
+				Bar.Parent = DropdownSearch
+				Bar.BackgroundColor3 = Color3.fromRGB(135, 255, 135)
+				Bar.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				Bar.BorderSizePixel = 0
+				Bar.Position = UDim2.new(0, 30, 0, 8)
+				Bar.Size = UDim2.new(0, 1, 1, -15)
+
+				SearchBox.Name = "SearchBox"
+				SearchBox.Parent = DropdownSearch
+				SearchBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				SearchBox.BackgroundTransparency = 1.000
+				SearchBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				SearchBox.BorderSizePixel = 0
+				SearchBox.Position = UDim2.new(0, 40, 0, 1)
+				SearchBox.Size = UDim2.new(1, -40, 0.966666639, 0)
+				SearchBox.Font = Enum.Font.SourceSans
+				SearchBox.PlaceholderColor3 = Color3.fromRGB(227, 225, 228)
+				SearchBox.PlaceholderText = "Search Here"
+				SearchBox.Text = ""
+				SearchBox.TextColor3 = Color3.fromRGB(227, 225, 228)
+				SearchBox.TextSize = 14.000
+				SearchBox.TextXAlignment = Enum.TextXAlignment.Left
+
+				Button.Name = "Button"
+				Button.Parent = OptionsFrame
+				Button.AnchorPoint = Vector2.new(1, 0)
+				Button.BackgroundColor3 = Color3.fromRGB(135, 255, 135)
+				Button.BackgroundTransparency = 0.500
+				Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				Button.BorderSizePixel = 0
+				Button.Position = UDim2.new(-3.69910026e-07, 0, 0, 0)
+				Button.Size = UDim2.new(0, 166, 0, 21)
+				Button.Font = Enum.Font.SourceSansBold
+				Button.Text = "Option 2"
+				Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+				Button.TextSize = 14.000
+
+				UICorner_6.CornerRadius = UDim.new(0, 3)
+				UICorner_6.Parent = Button
+
+				shadowHolder.Name = "shadowHolder"
+				shadowHolder.Parent = Button
+				shadowHolder.BackgroundColor3 = Color3.fromRGB(135, 255, 135)
+				shadowHolder.BackgroundTransparency = 1.000
+				shadowHolder.Position = UDim2.new(-0.0240974892, 0, -0.382667184, 0)
+				shadowHolder.Size = UDim2.new(1.0533855, 0, 1.61904764, 0)
+				shadowHolder.ZIndex = 0
+
+				ambientShadow.Name = "ambientShadow"
+				ambientShadow.Parent = shadowHolder
+				ambientShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+				ambientShadow.BackgroundTransparency = 1.000
+				ambientShadow.Position = UDim2.new(0.5, 0, 0.5, 2)
+				ambientShadow.Size = UDim2.new(1, 4, 1, 4)
+				ambientShadow.ZIndex = 0
+				ambientShadow.Image = "rbxassetid://1316045217"
+				ambientShadow.ImageColor3 = Color3.fromRGB(135, 255, 135)
+				ambientShadow.ImageTransparency = 0.880
+				ambientShadow.ScaleType = Enum.ScaleType.Slice
+				ambientShadow.SliceCenter = Rect.new(10, 10, 118, 118)
+
+				Button_2.Name = "Button"
+				Button_2.Parent = OptionsFrame
+				Button_2.AnchorPoint = Vector2.new(1, 0)
+				Button_2.BackgroundColor3 = Color3.fromRGB(135, 255, 135)
+				Button_2.BackgroundTransparency = 0.500
+				Button_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				Button_2.BorderSizePixel = 0
+				Button_2.Position = UDim2.new(-3.69910026e-07, 0, 0, 0)
+				Button_2.Size = UDim2.new(0, 166, 0, 21)
+				Button_2.Font = Enum.Font.SourceSansBold
+				Button_2.Text = "just testing"
+				Button_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+				Button_2.TextSize = 14.000
+
+				UICorner_7.CornerRadius = UDim.new(0, 3)
+				UICorner_7.Parent = Button_2
+
+				shadowHolder_2.Name = "shadowHolder"
+				shadowHolder_2.Parent = Button_2
+				shadowHolder_2.BackgroundColor3 = Color3.fromRGB(135, 255, 135)
+				shadowHolder_2.BackgroundTransparency = 1.000
+				shadowHolder_2.Position = UDim2.new(-0.0240974892, 0, -0.382667184, 0)
+				shadowHolder_2.Size = UDim2.new(1.0533855, 0, 1.61904764, 0)
+				shadowHolder_2.ZIndex = 0
+
+				ambientShadow_2.Name = "ambientShadow"
+				ambientShadow_2.Parent = shadowHolder_2
+				ambientShadow_2.AnchorPoint = Vector2.new(0.5, 0.5)
+				ambientShadow_2.BackgroundTransparency = 1.000
+				ambientShadow_2.Position = UDim2.new(0.5, 0, 0.5, 2)
+				ambientShadow_2.Size = UDim2.new(1, 4, 1, 4)
+				ambientShadow_2.ZIndex = 0
+				ambientShadow_2.Image = "rbxassetid://1316045217"
+				ambientShadow_2.ImageColor3 = Color3.fromRGB(135, 255, 135)
+				ambientShadow_2.ImageTransparency = 0.880
+				ambientShadow_2.ScaleType = Enum.ScaleType.Slice
+				ambientShadow_2.SliceCenter = Rect.new(10, 10, 118, 118)
+
+				Title.Name = "Title"
+				Title.Parent = Container
+				Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Title.BackgroundTransparency = 1.000
+				Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+				Title.BorderSizePixel = 0
+				Title.Position = UDim2.new(0, 7, 0, 1)
+				Title.Size = UDim2.new(0, 198, 0, 27)
+				Title.Font = Enum.Font.SourceSansBold
+				Title.Text = "Dropdown"
+				Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+				Title.TextSize = 14.000
+				Title.TextXAlignment = Enum.TextXAlignment.Left
+
 --[[
 
 				local OptionsFrame = Instance.new("Frame")
