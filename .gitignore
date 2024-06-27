@@ -477,7 +477,7 @@ function library:CreateWindow(name, version, icon)
 				elseif me:IsA("Frame") and me.Name == "Button" then
 					size = size + 43 
 				elseif me:IsA("Frame") and me.Name == "Label" then
-					size = size + 31  -- ADDING 1 TO MAKE SURE FRAME IS BIGGER
+					size = size + 100  -- ADDING 1 TO MAKE SURE FRAME IS BIGGER
 				elseif me:IsA("Frame") and me.Name == "TextBox" then
 					size = size + 37
 				elseif me:IsA("Frame") and me.Name == "Keybind" then
