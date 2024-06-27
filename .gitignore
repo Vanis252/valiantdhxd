@@ -899,7 +899,6 @@ function library:CreateWindow(name, version, icon)
 				local UICorner = Instance.new("UICorner")
 				UICorner.CornerRadius = UDim.new(0, 3)
 				UICorner.Parent = Dropdown
---[[
 				local Title = Instance.new("TextLabel")
 				Title.Name = "Title"
 				Title.Parent = Dropdown
@@ -914,7 +913,7 @@ function library:CreateWindow(name, version, icon)
 				Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 				Title.TextSize = 14.000
 				Title.TextXAlignment = Enum.TextXAlignment.Left
-
+--[[
 				local Container = Instance.new("Frame")
 				Container.Name = "Container"
 				Container.Parent = Dropdown
