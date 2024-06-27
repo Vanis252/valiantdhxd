@@ -923,18 +923,6 @@ function library:CreateWindow(name, version, icon)
 				Title.TextSize = 12.000
 				Title.TextXAlignment = Enum.TextXAlignment.Left
 
-				-- Check if the Title was created and parented correctly
-				if Title.Parent == Dropdown then
-					print("Title TextLabel created successfully")
-				else
-					warn("Failed to create Title TextLabel")
-				end
-
-				-- (Optional) Print the properties of the Dropdown and Title to debug
-				print("Dropdown properties: ", Dropdown.Name, Dropdown.Parent, Dropdown.Size)
-				print("Title properties: ", Title.Name, Title.Parent, Title.Text)
-
---[[
 				local Container = Instance.new("Frame")
 				Container.Name = "Container"
 				Container.Parent = Dropdown
@@ -1044,7 +1032,6 @@ function library:CreateWindow(name, version, icon)
 				SearchBox.TextColor3 = Color3.fromRGB(227, 225, 228)
 				SearchBox.TextSize = 14.000
 				SearchBox.TextXAlignment = Enum.TextXAlignment.Left
-	]]
 
 				-- Add buttons to the dropdown
 --[[
