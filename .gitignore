@@ -1152,7 +1152,7 @@ function library:CreateWindow(name, version, icon)
 					local script = Instance.new('LocalScript', Button)
 
 					Button.MouseButton1Click:Connect(function()
-						local original = UDim2.new(0, 98, 0, 22)
+						local original = UDim2.new(0, 166, 0, 21)
 						local expanded = UDim2.new(0, 173,0, 153)
 						OptionsFrame.Visible = false
 
