@@ -1109,165 +1109,46 @@ function library:CreateWindow(name, version, icon)
 				Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 				Title.TextSize = 14.000
 				Title.TextXAlignment = Enum.TextXAlignment.Left
+				
+				local function LQHEFF_fake_script() -- DropdownSearch.LocalScript 
+					local script = Instance.new('LocalScript', DropdownSearch)
 
---[[
+					local function UpdateResults()
+						local search = string.lower(SearchBox.Text)
 
-				local OptionsFrame = Instance.new("Frame")
-				OptionsFrame.Name = "OptionsFrame"
-				OptionsFrame.Parent = KButton
-				OptionsFrame.AnchorPoint = Vector2.new(1, 0)
-				OptionsFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 36)
-				OptionsFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				OptionsFrame.BorderSizePixel = 0
-				OptionsFrame.ClipsDescendants = true
-				OptionsFrame.Position = UDim2.new(1, 0, 0, 0)
-				OptionsFrame.Size = UDim2.new(0, 173, 0, 153)
-				OptionsFrame.Visible = false
+						for _, v in pairs(OptionsFrame:GetChildren()) do
+							if v:IsA("TextButton") then
+								local itemName = string.lower(v.Text)
+								local shouldBeVisible = true
 
-				local UICorner_4 = Instance.new("UICorner")
-				UICorner_4.CornerRadius = UDim.new(0, 3)
-				UICorner_4.Parent = OptionsFrame
-
-				local UIListLayout = Instance.new("UIListLayout")
-				UIListLayout.Parent = OptionsFrame
-				UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-				UIListLayout.Padding = UDim.new(0, 4)
-
-				local UIPadding = Instance.new("UIPadding")
-				UIPadding.Parent = OptionsFrame
-				UIPadding.PaddingBottom = UDim.new(0, 4)
-				UIPadding.PaddingLeft = UDim.new(0, 4)
-				UIPadding.PaddingRight = UDim.new(0, 4)
-				UIPadding.PaddingTop = UDim.new(0, 4)
-
-				local DropdownSearch = Instance.new("Frame")
-				DropdownSearch.Name = "DropdownSearch"
-				DropdownSearch.Parent = OptionsFrame
-				DropdownSearch.BackgroundColor3 = Color3.fromRGB(30, 30, 36)
-				DropdownSearch.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				DropdownSearch.BorderSizePixel = 0
-				DropdownSearch.Position = UDim2.new(0, 0, 0.17, 0)
-				DropdownSearch.Size = UDim2.new(1, 0, 0, 30)
-
-				local UICorner_5 = Instance.new("UICorner")
-				UICorner_5.CornerRadius = UDim.new(0, 3)
-				UICorner_5.Parent = DropdownSearch
-
-				local SearchIcon = Instance.new("ImageLabel")
-				SearchIcon.Name = "SearchIcon"
-				SearchIcon.Parent = DropdownSearch
-				SearchIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				SearchIcon.BackgroundTransparency = 1.000
-				SearchIcon.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				SearchIcon.BorderSizePixel = 0
-				SearchIcon.Position = UDim2.new(0, 6, 0, 3)
-				SearchIcon.Size = UDim2.new(0, 18, 0, 18)
-				SearchIcon.Image = "rbxassetid://10045418551"
-				SearchIcon.ImageColor3 = Color3.fromRGB(135, 255, 135)
-
-				local Bar = Instance.new("Frame")
-				Bar.Name = "Bar"
-				Bar.Parent = DropdownSearch
-				Bar.BackgroundColor3 = Color3.fromRGB(135, 255, 135)
-				Bar.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				Bar.BorderSizePixel = 0
-				Bar.Position = UDim2.new(0, 30, 0, 8)
-				Bar.Size = UDim2.new(0, 1, 1, -15)
-
-				local SearchBox = Instance.new("TextBox")
-				SearchBox.Name = "SearchBox"
-				SearchBox.Parent = DropdownSearch
-				SearchBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				SearchBox.BackgroundTransparency = 1.000
-				SearchBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				SearchBox.BorderSizePixel = 0
-				SearchBox.Position = UDim2.new(0, 40, 0, 1)
-				SearchBox.Size = UDim2.new(1, -40, 1, 0)
-				SearchBox.Font = Enum.Font.SourceSans
-				SearchBox.PlaceholderColor3 = Color3.fromRGB(227, 225, 228)
-				SearchBox.PlaceholderText = "Search Here"
-				SearchBox.Text = ""
-				SearchBox.TextColor3 = Color3.fromRGB(227, 225, 228)
-				SearchBox.TextSize = 14.000
-				SearchBox.TextXAlignment = Enum.TextXAlignment.Left
-]]
-
-				-- Add buttons to the dropdown
---[[
-				for _, buttonInfo in pairs(buttons) do
-					Button = Instance.new("TextButton")
-					Button.Name = "Button"
-					Button.Parent = OptionsFrame
-					Button.AnchorPoint = Vector2.new(1, 0)
-					Button.BackgroundColor3 = Color3.fromRGB(135, 255, 135)
-					Button.BackgroundTransparency = 0.500
-					Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					Button.BorderSizePixel = 0
-					Button.Position = UDim2.new(0, 0, 0, 0)
-					Button.Size = UDim2.new(0, 166, 0, 21)
-					Button.Font = Enum.Font.SourceSansBold
-					Button.Text = buttonInfo.Text
-					Button.TextColor3 = Color3.fromRGB(255, 255, 255)
-					Button.TextSize = 14.000
-
-					local UICorner_Button = Instance.new("UICorner")
-					UICorner_Button.CornerRadius = UDim.new(0, 3)
-					UICorner_Button.Parent = Button
-
-					-- Assign callback
-					Button.MouseButton1Click:Connect(buttonInfo.Callback)
-				end
-
-				-- Toggle dropdown visibility
-				KButton.MouseButton1Click:Connect(function()
-					OptionsFrame.Visible = not OptionsFrame.Visible
-				end)
-]]
-
-				-- LocalScripts
---[[
-spawn(function()
-					local function JNFZ_fake_script() -- DropdownSearch.LocalScript
-						local script = Instance.new('LocalScript', DropdownSearch)
-
-						local function UpdateResults()
-							local search = string.lower(SearchBox.Text)
-
-							for _, v in pairs(OptionsFrame:GetChildren()) do
-								if v:IsA("TextButton") then
-									local itemName = string.lower(v.Text)
-									local shouldBeVisible = true
-
-									if search ~= "" then
-										if v.Name == "Button" then
-											if not string.find(itemName, search) then
-												shouldBeVisible = false
-											end
+								if search ~= "" then
+									if v.Name == "Button" then
+										if not string.find(itemName, search) then
+											shouldBeVisible = false
 										end
 									end
-
-									-- Tween transparency for smoother animation
-									local endTransparency = shouldBeVisible and 0 or 0.5
-									local tweenInfo = TweenInfo.new(0.2)
-									local tween = game:GetService("TweenService"):Create(v, tweenInfo, { Transparency = endTransparency })
-									tween:Play()
-
-									-- Set visibility after animation completes
-									tween.Completed:Connect(function()
-										v.Visible = shouldBeVisible
-									end)
 								end
+
+								-- Tween transparency for smoother animation
+								local endTransparency = shouldBeVisible and 0 or 0.5
+								local tweenInfo = TweenInfo.new(0.2)
+								local tween = game:GetService("TweenService"):Create(v, tweenInfo, { Transparency = endTransparency })
+								tween:Play()
+
+								-- Set visibility after animation completes
+								tween.Completed:Connect(function()
+									v.Visible = shouldBeVisible
+								end)
 							end
 						end
-
-						-- Connect the UpdateResults function to the SearchBox's Changed event
-						SearchBox.Changed:Connect(UpdateResults)
 					end
-					coroutine.wrap(JNFZ_fake_script)()
-end)
 
+					-- Connect the UpdateResults function to the SearchBox's Changed event
+					SearchBox.Changed:Connect(UpdateResults)
 
-				local function RLFT_fake_script() -- Button.LocalScript
+				end
+				coroutine.wrap(LQHEFF_fake_script)()
+				local function FALZE_fake_script() -- Button.LocalScript 
 					local script = Instance.new('LocalScript', Button)
 
 					Button.MouseButton1Click:Connect(function()
@@ -1275,15 +1156,15 @@ end)
 						local expanded = UDim2.new(0, 173,0, 153)
 						OptionsFrame.Visible = false
 
-						game:GetService("TweenService"):Create(Button, TweenInfo.new(0.4), {Size = expanded}):Play()
-						game:GetService("TweenService"):Create(OptionsFrame, TweenInfo.new(0.4), {Size = expanded}):Play()
+						game:GetService("TweenService"):Create(Button, TweenInfo.new(0.4), {Size = expanded}):Play();
+						game:GetService("TweenService"):Create(OptionsFrame, TweenInfo.new(0.4), {Size = expanded}):Play();
 						OptionsFrame.Visible = true
 
 						for _, optionButton in ipairs(OptionsFrame:GetChildren()) do
 							if optionButton:IsA("TextButton") then
 								optionButton.MouseButton1Click:Connect(function()
 									Button.Text = optionButton.Text
-									game:GetService("TweenService"):Create(Button, TweenInfo.new(0.4), {Size = original}):Play()
+									game:GetService("TweenService"):Create(Button TweenInfo.new(0.4), {Size = original}):Play();
 									local info = TweenInfo.new(0.4)
 									local tween = game:GetService("TweenService"):Create(OptionsFrame, info, {Size = original})
 									tween:Play()
@@ -1294,25 +1175,24 @@ end)
 						end
 					end)
 				end
-				coroutine.wrap(RLFT_fake_script)()
+				coroutine.wrap(FALZE_fake_script)()
+				local function XAHFE_fake_script() -- Button_2.LocalScript 
+					local script = Instance.new('LocalScript', Button_2)
 
-				local function YBHRFV_fake_script() -- Button_2.LocalScript
-					local script = Instance.new('LocalScript', Button)
-
-					Button.MouseButton1Click:Connect(function()
+					Button_2.MouseButton1Click:Connect(function()
 						local original = UDim2.new(0, 98, 0, 22)
 						local expanded = UDim2.new(0, 173,0, 153)
 						OptionsFrame.Visible = false
 
-						game:GetService("TweenService"):Create(Button, TweenInfo.new(0.4), {Size = expanded}):Play()
-						game:GetService("TweenService"):Create(OptionsFrame, TweenInfo.new(0.4), {Size = expanded}):Play()
+						game:GetService("TweenService"):Create(Button_2, TweenInfo.new(0.4), {Size = expanded}):Play();
+						game:GetService("TweenService"):Create(OptionsFrame, TweenInfo.new(0.4), {Size = expanded}):Play();
 						OptionsFrame.Visible = true
 
 						for _, optionButton in ipairs(OptionsFrame:GetChildren()) do
 							if optionButton:IsA("TextButton") then
 								optionButton.MouseButton1Click:Connect(function()
-									Button.Text = optionButton.Text
-									game:GetService("TweenService"):Create(Button, TweenInfo.new(0.4), {Size = original}):Play()
+									Button_2.Text = optionButton.Text
+									game:GetService("TweenService"):Create(Button_2, TweenInfo.new(0.4), {Size = original}):Play();
 									local info = TweenInfo.new(0.4)
 									local tween = game:GetService("TweenService"):Create(OptionsFrame, info, {Size = original})
 									tween:Play()
@@ -1323,9 +1203,8 @@ end)
 						end
 					end)
 				end
-				coroutine.wrap(YBHRFV_fake_script)()
-
-				local function USYX_fake_script() -- KButton.LocalScript
+				coroutine.wrap(XAHFE_fake_script)()
+				local function ZTCG_fake_script() -- KButton.LocalScript 
 					local script = Instance.new('LocalScript', KButton)
 
 					local original = UDim2.new(0, 98, 0, 22)
@@ -1333,7 +1212,7 @@ end)
 
 					KButton.MouseButton1Click:Connect(function()
 
-						local thing = OptionsFrame
+						local thing = OptionsFrame -- I want to find DropdownSearch instead
 						local skrt = thing.DropdownSearch
 						-- Ensure OptionsFrame visibility and size
 						OptionsFrame.Visible = true
@@ -1348,6 +1227,7 @@ end)
 						-- Tween animations
 						local tweenInfo = TweenInfo.new(0.15)
 
+						-- Tween for the button (script.Parent)
 						local tweenButton = game:GetService("TweenService"):Create(KButton, tweenInfo, {Size = expanded})
 						tweenButton:Play()
 
@@ -1377,9 +1257,10 @@ end)
 							end
 						end
 					end)
+
 				end
-				coroutine.wrap(USYX_fake_script)()
-]]
+				coroutine.wrap(ZTCG_fake_script)()
+
 			end
 
 			function pagebuttons:CreateBox(name, icon, callback)
