@@ -887,6 +887,12 @@ function library:CreateWindow(name, version, icon)
 			
 			-- CreateDropdown function
 			function pagebuttons:CreateDropdown(name)
+				-- Ensure SectionContainer is defined and available
+				if not SectionContainer then
+					warn("SectionContainer is not defined")
+					return
+				end
+
 				-- Create the main dropdown Frame
 				local Dropdown = Instance.new("Frame")
 				Dropdown.Name = "Dropdown"
@@ -896,9 +902,12 @@ function library:CreateWindow(name, version, icon)
 				Dropdown.BorderSizePixel = 0
 				Dropdown.Size = UDim2.new(1, 0, 0, 30)
 
+				-- Add a UICorner for rounded corners
 				local UICorner = Instance.new("UICorner")
 				UICorner.CornerRadius = UDim.new(0, 3)
 				UICorner.Parent = Dropdown
+
+				-- Create the Title TextLabel
 				local Title = Instance.new("TextLabel")
 				Title.Name = "Title"
 				Title.Parent = Dropdown
@@ -908,11 +917,25 @@ function library:CreateWindow(name, version, icon)
 				Title.BorderSizePixel = 0
 				Title.Position = UDim2.new(0, 7, 0, 6)
 				Title.Size = UDim2.new(1, -7, 0.55, 0)
-				Title.Font = Enum.Font.SourceSansBold
+				Title.Font = Enum.Font.GothamBold
 				Title.Text = name
 				Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 				Title.TextSize = 14.000
 				Title.TextXAlignment = Enum.TextXAlignment.Left
+
+				-- Check if the Title was created and parented correctly
+				if Title.Parent == Dropdown then
+					print("Title TextLabel created successfully")
+				else
+					warn("Failed to create Title TextLabel")
+				end
+
+				-- (Optional) Print the properties of the Dropdown and Title to debug
+				print("Dropdown properties: ", Dropdown.Name, Dropdown.Parent, Dropdown.Size)
+				print("Title properties: ", Title.Name, Title.Parent, Title.Text)
+
+				-- Return the Dropdown for further customization if needed
+				return Dropdown
 --[[
 				local Container = Instance.new("Frame")
 				Container.Name = "Container"
