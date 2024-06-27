@@ -920,7 +920,7 @@ function library:CreateWindow(name, version, icon)
 				Title.Font = Enum.Font.GothamBold
 				Title.Text = name
 				Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-				Title.TextSize = 14.000
+				Title.TextSize = 12.000
 				Title.TextXAlignment = Enum.TextXAlignment.Left
 
 				-- Check if the Title was created and parented correctly
@@ -934,8 +934,6 @@ function library:CreateWindow(name, version, icon)
 				print("Dropdown properties: ", Dropdown.Name, Dropdown.Parent, Dropdown.Size)
 				print("Title properties: ", Title.Name, Title.Parent, Title.Text)
 
-				-- Return the Dropdown for further customization if needed
-				return Dropdown
 --[[
 				local Container = Instance.new("Frame")
 				Container.Name = "Container"
