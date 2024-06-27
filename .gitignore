@@ -881,36 +881,7 @@ function library:CreateWindow(name, version, icon)
 					end
 				end)
 				
-				local textBox = ValueText
-				local TweenService = game:GetService("TweenService")
-				local originalSize = textBox.Size
 				
-				local function updateTextBoxSize()
-					local textSize = textBox.TextSize
-					local textBounds = textBox.TextBounds
-
-					-- Calculate the new size with some padding
-					local newSize = UDim2.new(0, textBounds.X + 20, 0, textBounds.Y + 20)
-
-					-- Determine if the TextBox needs to expand or contract
-					if newSize.X.Offset > textBox.Size.X.Offset or newSize.Y.Offset > textBox.Size.Y.Offset then
-						-- Expand the TextBox
-						local tweenInfo = TweenInfo.new(0.1, Enum.EasingStyle.Cubic, Enum.EasingDirection.In)
-						local tween = TweenService:Create(textBox, tweenInfo, {Size = newSize})
-						tween:Play()
-					elseif newSize.X.Offset <= originalSize.X.Offset and newSize.Y.Offset <= originalSize.Y.Offset then
-						-- Contract the TextBox back to the original size
-						local tweenInfo = TweenInfo.new(0.1, Enum.EasingStyle.Cubic, Enum.EasingDirection.In)
-						local tween = TweenService:Create(textBox, tweenInfo, {Size = originalSize})
-						tween:Play()
-					end
-				end
-
-				-- Connect the function to the Text property change
-				textBox:GetPropertyChangedSignal("Text"):Connect(updateTextBoxSize)
-				textBox:GetPropertyChangedSignal("TextSize"):Connect(updateTextBoxSize)
-				
-				updateTextBoxSize()
 				return library4	
 			end
 			
