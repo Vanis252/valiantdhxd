@@ -935,6 +935,7 @@ function library:CreateWindow(name, version, icon)
 				UICorner_2.CornerRadius = UDim.new(0, 3)
 				UICorner_2.Parent = Container
 
+--[[
 				local KButton = Instance.new("TextButton")
 				KButton.Name = "KButton"
 				KButton.Parent = Container
@@ -1032,6 +1033,7 @@ function library:CreateWindow(name, version, icon)
 				SearchBox.TextColor3 = Color3.fromRGB(227, 225, 228)
 				SearchBox.TextSize = 14.000
 				SearchBox.TextXAlignment = Enum.TextXAlignment.Left
+]]
 
 				-- Add buttons to the dropdown
 --[[
