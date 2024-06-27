@@ -44,6 +44,7 @@ function library:CreateWindow(name, version, icon)
 	Window.Position = UDim2.new(0.5, -300, 0.600000024, -200)
 	Window.Size = UDim2.new(0, 0, 0, 0)
 	Window.ClipsDescendants = true
+	Window.ZIndex = 0
 
 	UICorner.CornerRadius = UDim.new(0, 4)
 	UICorner.Parent = Window
@@ -886,7 +887,7 @@ function library:CreateWindow(name, version, icon)
 			function pagebuttons:CreateDropdown(name, buttons)
 				-- Create the main dropdown Frame
 				local Dropdown = Instance.new("Frame")
-				Dropdown.Name = name
+				Dropdown.Name = "Dropdown"
 				Dropdown.Parent = SectionContainer
 				Dropdown.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
 				Dropdown.BorderColor3 = Color3.fromRGB(0, 0, 0)
