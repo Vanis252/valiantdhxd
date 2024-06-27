@@ -157,6 +157,8 @@ function library:CreateWindow(name, version, icon)
 				if Tabs and Tabs.Visible == true then
 					Tabs.Visible = false
 				end
+			Window:WaitForChild("Tabs").Visible = false
+			Window:WaitForChild("TitleBar").Visible = false
 			end
 		else
 			MinimizeGui = false
